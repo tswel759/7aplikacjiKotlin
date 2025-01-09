@@ -4,35 +4,49 @@ data class Ksiazka (
     val rokWydania: Int
 )
 
-class ZarzadajKsiazkami {
+class ZarzadzajKsiazkami {
     private val ksiazki = mutableListOf<Ksiazka>()
+
 
     fun dodajKsiazke(tytul: String, autor: String, rokWydania: Int) {
         val ksiazka = Ksiazka(tytul, autor, rokWydania)
-        ksiazki.add(ksiazki)
+        ksiazki.add(ksiazka)
     }
+
 
     fun wyswietlWszystkieKsiazki() {
         if (ksiazki.isEmpty()) {
-            println("Nie ma zadnej ksiazki.")
+            println("Nie ma żadnej książki.")
             return
         }
-        println("\nZbiór książek: ")
+        println("\nZbiór książek:")
         ksiazki.forEach { println("{$it.tytul} - ${it.autor} (${it.rokWydania})")}
     }
+
+
     fun filtrujPoAutorze(autor: String) {
-        val filtrowanie = ksiazki.filter{ it.autor.equals(autor, ignoreCase = true)}
+        val filtrowanie = ksiazki.filter { it.autor.equals(autor, ignoreCase = true) }
         if (filtrowanie.isEmpty()) {
-            println("Brak ksiązki tego autora")
+            println("Brak książki tego pisarza $autor")
             return
         }
-        println("\nLista bestsellerów pisza autor: ")
-        filtrowanie.forEach {println("$it.tytul (${it.rokWydania})")}
+        println("\nLista bestsellerów pisarza $autor:")
+        filtrowanie.forEach { println("${it.tytul} (${it.rokWydania})")}
     }
+
+
     fun filtrujPoRoku(rok: Int) {
-        
+        val filtrowanie = ksiazki.filter { it.rokWydania == rok }
+        if (filtrowanie.isEmpty()) {
+            println("Brak książki tegorocznej $rok")
+            return
+        }
+        println("\nLista tegorocznych książek $rok:")
+        filtrowanie.forEach { println("${it.tytul} (${it.rokWydania})")}
     }
-fun sortowaniePoTytule() {
+
+
+    fun sortowaniePoTytule() {
         if (ksiazki.isEmpty()) {
             println("Nie ma żadnej książki.")
             return
@@ -45,7 +59,7 @@ fun sortowaniePoTytule() {
 
 fun main() {
     val menedzer = ZarzadzajKsiazkami()
-    
+
     menedzer.dodajKsiazke("Harry Potter", "J.K. Rowling", 1999)
     menedzer.dodajKsiazke("Wiedźmin", "A. Sapkowski", 2024)
 
@@ -54,5 +68,4 @@ fun main() {
     menedzer.filtrujPoRoku(1999)
     menedzer.sortowaniePoTytule()
 
-}
 }
