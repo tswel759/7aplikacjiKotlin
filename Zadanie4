@@ -1,1 +1,24 @@
+// Piszemy interfejsik pogodowy
 
+interface Pogoda {
+    fun opis(): String
+}
+
+// Reprezentujemy rozmaite stany pogodowe
+class Slonce : Pogoda {
+    override fun opis() = "Super gorąco, można wyjść do restauracji!"
+}
+
+class Deszcz : Pogoda {
+    override fun opis() = "Leje, więc bierz parasolkę!"
+}
+
+class Chmury : Pogoda {
+    override fun opis() = "Pochmurno, może padać!"
+}
+
+// Reprezentujemy dane miejscowości
+data class Miasto (
+    val nazwa: String,
+    var aktualnaPogoda: Pogoda
+)
