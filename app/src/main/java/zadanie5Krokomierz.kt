@@ -11,6 +11,11 @@ class Krokomierz {
             println("Liczba kroków: $liczbaKrokow")
         }
 
+        fun resetujKroki() {
+            liczbaKrokow = 0
+            println("Licznik kroków został zresetowany.")
+        }
+
     }
 
     fun main() {
