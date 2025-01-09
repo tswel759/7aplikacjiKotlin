@@ -1,0 +1,35 @@
+data class Ksiazka (
+    val tytul: String,
+    val autor: String,
+    val rokWydania: Int
+)
+
+class ZarzadajKsiazkami {
+    private val ksiazki = mutableListOf<Ksiazka>()
+
+    fun dodajKsiazke(tytul: String, autor: String, rokWydania: Int) {
+        val ksiazka = Ksiazka(tytul, autor, rokWydania)
+        ksiazki.add(ksiazki)
+    }
+
+    fun wyswietlWszystkieKsiazki() {
+        if (ksiazki.isEmpty()) {
+            println("Nie ma zadnej ksiazki.")
+            return
+        }
+        println("\nZbiór książek: ")
+        ksiazki.forEach { println("{$it.tytul} - ${it.autor} (${it.rokWydania})")}
+    }
+    fun filtrujPoAutorze(autor: String) {
+        val filtrowanie = ksiazki.filter{ it.autor.equals(autor, ignoreCase = true)}
+        if (filtrowanie.isEmpty()) {
+            println("Brak ksiązki tego autora")
+            return
+        }
+        println("\nLista bestsellerów pisza autor: ")
+        filtrowanie.forEach {println("$it.tytul (${it.rokWydania})")}
+    }
+    fun filtrujPoRoku(rok: Int) {
+        
+    }
+}
