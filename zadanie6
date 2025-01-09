@@ -3,4 +3,11 @@ fun main() {
     val prog = 70
     val punktyBonusowe = 10
 
+    val przefiltrowaneWyniki = wynikiMeczy.filter { it > prog }
+    val wynikiZBonusem = wynikiMeczy.map { it + punktyBonusowe }
+    val sumaWynikow = wynikiMeczy.sum()
+    val maksymalnyWynik = wynikiMeczy.maxOrNull() ?: 0
+    val minimalnyWynik = wynikiMeczy.minOrNull() ?: 0
+    val roznica = maksymalnyWynik - minimalnyWynik
+    val meczePowyzej70 = wynikiMeczy.count { it > 70 }
    
