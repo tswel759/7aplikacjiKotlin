@@ -1,0 +1,6 @@
+fun main() {
+    val wynikiMeczy = listOf(50, 75, 30, 90, 60)
+    val prog = 70
+    val punktyBonusowe = 10
+
+   
