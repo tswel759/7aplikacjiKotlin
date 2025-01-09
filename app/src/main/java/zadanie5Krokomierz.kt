@@ -8,17 +8,24 @@ class Krokomierz {
         }
 
         fun pokazKroki() {
-            println("Liczba kroków: $liczbaKrokow")
+            println("Liczba krokow: $liczbaKrokow")
         }
 
         fun resetujKroki() {
             liczbaKrokow = 0
-            println("Licznik kroków został zresetowany.")
+            println("Licznik krokow zostal zresetowany.")
         }
-
+    }
     }
 
     fun main() {
+        Krokomierz.zrobKrok()
+        Krokomierz.zrobKrok()
+        Krokomierz.zrobKrok()
+        Krokomierz.zrobKrok()
+        Krokomierz.zrobKrok()
+        Krokomierz.pokazKroki()
 
+        Krokomierz.resetujKroki()
+        Krokomierz.pokazKroki()
     }
-}
