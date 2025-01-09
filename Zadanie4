@@ -49,4 +49,35 @@ class PrognozaPogody {
             println("Podałeś zły numerek miejscowości!")
         }
     }
+      // Aktualizujemy prognozę danej miejscowości
+     fun aktualizujPogode(indeksMiasta: Int, nowaPogoda: Pogoda) {
+         try {
+             miasta[indeksMiasta - 1].aktualnaPogoda = nowaPogoda
+             println("Nastąpiła aktualizacja prognozy miejscowości ${miasta[indeksMiasta -1].nazwa}")
+         } catch (e: IndexOutOfBoundsException) {
+             println("Podałeś zły numerek miejscowości!")
+         }
+     }
+}
+   
+    fun main() {
+        val prognoza = PrognozaPogody()
        
+        // Dodajemy przykładowe miejscowości
+        prognoza.dodajMiasto("Olsztyn", Slonce())
+        prognoza.dodajMiasto("Opole", Deszcz())
+        prognoza.dodajMiasto("Otwock", Chmury())
+       
+        // Uruchamiamy aplikacje
+        prognoza.wyswietlDostepneMiasta()
+       
+        println("\nWyświetlamy pogodę każdej danej miejscowości:")
+        for (i in 1..3) {
+            prognoza.wyswietlPogode(i)
+        }
+       
+        // Aktualizujemy aplikacje
+        println("\nNowa prognoza:")
+        prognoza.aktualizujPogode(1, Deszcz())
+        prognoza.wyswietlPogode(1)
+    }
