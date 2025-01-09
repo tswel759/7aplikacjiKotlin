@@ -2,14 +2,12 @@ interface RollingTool {
     fun roll(): String
 }
 
-// Klasa Coin dziedzicząca po RollingTool
 class Coin : RollingTool {
     override fun roll(): String {
         return if ((1..2).random() == 1) "Heads" else "Tails"
     }
 }
 
-// Klasa Dice dziedzicząca po RollingTool
 class Dice : RollingTool {
     override fun roll(): String {
         return (1..6).random().toString()
@@ -25,6 +23,5 @@ fun main() {
         2 -> Dice().roll()
         else -> "Nieprawidlowy wybor"
     }
-
     println("Wynik: $result")
 }
