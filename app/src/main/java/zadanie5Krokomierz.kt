@@ -7,6 +7,9 @@ class Krokomierz {
             liczbaKrokow++
         }
 
+        fun pokazKroki() {
+            println("Liczba kroków: $liczbaKrokow")
+        }
 
     }
 
