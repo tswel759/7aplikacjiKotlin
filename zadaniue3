@@ -32,4 +32,27 @@ class ZarzadajKsiazkami {
     fun filtrujPoRoku(rok: Int) {
         
     }
+fun sortowaniePoTytule() {
+        if (ksiazki.isEmpty()) {
+            println("Nie ma żadnej książki.")
+            return
+        }
+        println("\nLista posortowanych książek:")
+        ksiazki.sortedBy { it.tytul }
+            .forEach { println("${it.tytul} - ${it.autor} (${it.rokWydania})")}
+    }
+}
+
+fun main() {
+    val menedzer = ZarzadzajKsiazkami()
+    
+    menedzer.dodajKsiazke("Harry Potter", "J.K. Rowling", 1999)
+    menedzer.dodajKsiazke("Wiedźmin", "A. Sapkowski", 2024)
+
+    menedzer.wyswietlWszystkieKsiazki()
+    menedzer.filtrujPoAutorze("Sapkowski")
+    menedzer.filtrujPoRoku(1999)
+    menedzer.sortowaniePoTytule()
+
+}
 }
