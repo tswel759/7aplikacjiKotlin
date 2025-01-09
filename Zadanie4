@@ -1,10 +1,7 @@
-// Piszemy interfejsik pogodowy
-
 interface Pogoda {
     fun opis(): String
 }
 
-// Reprezentujemy rozmaite stany pogodowe
 class Slonce : Pogoda {
     override fun opis() = "Super gorąco, można wyjść do restauracji!"
 }
@@ -17,21 +14,18 @@ class Chmury : Pogoda {
     override fun opis() = "Pochmurno, może padać!"
 }
 
-// Reprezentujemy dane miejscowości
 data class Miasto (
     val nazwa: String,
     var aktualnaPogoda: Pogoda
 )
-// Zarządzanie prognozami
+
 class PrognozaPogody {
     private val miasta = mutableListOf<Miasto>()
    
-    // Dodajemy miejscowości
     fun dodajMiasto(nazwa: String, pogoda: Pogoda) {
         miasta.add(Miasto(nazwa, pogoda))
     }
    
-    // Wyświetlamy dostępne miejscowości
        fun wyswietlDostepneMiasta() {
         println("\nLista miejscowości:")
         miasta.forEachIndexed { index, miasto ->
@@ -39,7 +33,6 @@ class PrognozaPogody {
     }
 }
    
-    // Wyświetlamy pogodę danej miejscowości
     fun wyswietlPogode(indeksMiasta: Int) {
         try {
             val miasto = miasta[indeksMiasta - 1]
@@ -49,7 +42,7 @@ class PrognozaPogody {
             println("Podałeś zły numerek miejscowości!")
         }
     }
-      // Aktualizujemy prognozę danej miejscowości
+       
      fun aktualizujPogode(indeksMiasta: Int, nowaPogoda: Pogoda) {
          try {
              miasta[indeksMiasta - 1].aktualnaPogoda = nowaPogoda
@@ -63,12 +56,12 @@ class PrognozaPogody {
     fun main() {
         val prognoza = PrognozaPogody()
        
-        // Dodajemy przykładowe miejscowości
         prognoza.dodajMiasto("Olsztyn", Slonce())
         prognoza.dodajMiasto("Opole", Deszcz())
         prognoza.dodajMiasto("Otwock", Chmury())
+        prognoza.dodajMiasto("Warszawa", Slonce())
+        prognoza.dodajMiasto("Los Angeles", Chmury())
        
-        // Uruchamiamy aplikacje
         prognoza.wyswietlDostepneMiasta()
        
         println("\nWyświetlamy pogodę każdej danej miejscowości:")
@@ -76,7 +69,6 @@ class PrognozaPogody {
             prognoza.wyswietlPogode(i)
         }
        
-        // Aktualizujemy aplikacje
         println("\nNowa prognoza:")
         prognoza.aktualizujPogode(1, Deszcz())
         prognoza.wyswietlPogode(1)
