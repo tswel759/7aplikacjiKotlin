@@ -22,3 +22,31 @@ data class Miasto (
     val nazwa: String,
     var aktualnaPogoda: Pogoda
 )
+// Zarządzanie prognozami
+class PrognozaPogody {
+    private val miasta = mutableListOf<Miasto>()
+   
+    // Dodajemy miejscowości
+    fun dodajMiasto(nazwa: String, pogoda: Pogoda) {
+        miasta.add(Miasto(nazwa, pogoda))
+    }
+   
+    // Wyświetlamy dostępne miejscowości
+       fun wyswietlDostepneMiasta() {
+        println("\nLista miejscowości:")
+        miasta.forEachIndexed { index, miasto ->
+            println("${index + 1}. ${miasto.nazwa}")
+    }
+}
+   
+    // Wyświetlamy pogodę danej miejscowości
+    fun wyswietlPogode(indeksMiasta: Int) {
+        try {
+            val miasto = miasta[indeksMiasta - 1]
+            println("\nPrognozujemy dla miejscowości takie warunki pogodowe ${miasto.nazwa}:")
+            println(miasto.aktualnaPogoda.opis())
+        } catch (e: IndexOutOfBoundsException) {
+            println("Podałeś zły numerek miejscowości!")
+        }
+    }
+       
