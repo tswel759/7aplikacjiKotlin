@@ -6,9 +6,13 @@ object Quotes {
         "co dwie glowy, to nie jedna."
     )
 
+    fun getRandomQuote(): String {
+        return quotes.random()
+    }
 
 
-fun main() {
+
+    fun main() {
 
 }
 }
