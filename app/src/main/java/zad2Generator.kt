@@ -9,7 +9,9 @@ object Quotes {
     fun getRandomQuote(): String {
         return quotes.random()
     }
-
+    fun addQuote(quote: String) {
+        quotes.add(quote)
+    }
 
 
     fun main() {
